@@ -9,17 +9,14 @@ services:
         condition: on-failure
     volumes:
       - "/var/docker/wordpress/data:/var/www/html"
-    networks:
-      - wordpressnet
-      - mysqlnet
     environment:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_USER: hatlonely
       WORDPRESS_DB_PASSWORD: keaiduo1
       WORDPRESS_DB_NAME: wordpress
+    networks:
+      - online
 networks:
-  wordpressnet:
-    name: wordpressnet
-  mysqlnet:
+  online:
     external: true
-    name: mysqlnet
+    name: online
